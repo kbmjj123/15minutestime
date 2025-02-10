@@ -1,0 +1,128 @@
+# 15 minutes timer - Cursor 规则
+
+## 项目信息
+- 名称: 15 minutes timer
+- 描述: 15分钟定时器。
+- 技术栈:
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+
+## 代码风格
+- 缩进: 2 个空格
+- 引号: 单引号
+- 分号: 禁用
+- 行长度: 80 个字符
+- 文件命名: kebab-case（例如：my-component.tsx）
+
+## 规则
+
+### 自动导入
+- 启用: 是
+- 路径别名:
+  - `@`: `./`
+  - `~`: `./`
+  - `components`: `./components`
+  - `hooks`: `./hooks`
+  - `utils`: `./utils`
+
+### 代码检查
+- 启用: 是
+- 工具:
+  - ESLint
+  - Prettier
+- 自定义规则:
+  - `react/display-name`: 关闭
+  - `no-console`: 警告
+
+### 测试
+#### 单元测试
+- 框架: Jest
+- 路径: `./tests/unit`
+- 文件模式: `/*.spec.ts`
+
+#### 端到端测试
+- 框架: Playwright
+- 路径: `./tests/e2e`
+- 文件模式: `/*.spec.ts`
+
+### AI 辅助
+#### 代码补全
+- 启用: 是
+- 上下文:
+  - React 组件: 是
+  - TypeScript 类型: 是
+  - Supabase 查询: 是
+
+#### 代码生成
+- 启用: 是
+- 模板:
+  - Vue 组件:
+    - 路径: `./templates/react-component.txt`
+    - 变量: `componentName`, `props`
+  - Supabase 查询:
+    - 路径: `./templates/supabase-query.txt`
+    - 变量: `tableName`, `columns`
+
+### 文档
+- 启用: 是
+- 路径: `./docs`
+- 文件模式: `/*.md`
+- 自动生成:
+  - 组件文档: 是
+  - API 文档: 是
+
+## 工作流
+### CI/CD
+- 启用: 是
+- 平台: GitHub Actions
+- 配置文件路径: `./.github/workflows/ci.yml`
+
+### 预提交钩子
+- 启用: 是
+- 钩子:
+  - 代码检查 (Lint)
+  - 测试 (Test)
+
+---
+
+## Next.js 最佳实践
+
+### 代码风格与结构
+- 编写干净、可维护且技术准确的 TypeScript 代码。
+- 优先使用函数式和声明式编程模式，避免使用类。
+- 强调迭代和模块化，遵循 DRY 原则，减少代码重复。
+- 优先使用 Composition API 的 `<script setup>` 风格。
+- 使用 Composables 封装和共享客户端逻辑或状态。
+
+### Next.js 特定规则
+- 页面路由: 使用 pages 目录或 app 目录（Next.js 13+）定义路由。
+- API 路由: 在 pages/api 或 app/api 目录中处理服务器端操作（如数据库交互、身份验证或敏感数据处理）。
+- 数据获取:
+  - 使用 getStaticProps 或 getServerSideProps 进行服务器端数据获取。
+  - 使用 useSWR 或 React Query 进行客户端数据获取。
+- SEO: 使用 next/head 组件优化 SEO。
+- 图片和图标:
+  - 使用 next/image 组件优化图片加载。
+  - 使用 react-icons 或自定义 SVG 组件处理图标。
+- 环境变量: 使用 .env.local 和 next.config.js 管理环境变量。
+
+### 数据获取
+- getStaticProps: 用于静态生成页面时获取数据。
+- getServerSideProps: 用于服务器端渲染页面时获取数据。
+- useSWR: 用于客户端数据获取，支持缓存和重新验证。
+- React Query: 用于复杂的数据获取逻辑，支持缓存、轮询和错误处理。
+
+### 命名规范
+- Hooks: 命名为 use<MyHook>。
+- 组件文件: 使用 PascalCase（例如：components/MyComponent.tsx）。
+- 函数导出: 优先使用命名导出，保持一致性。
+
+### TypeScript 使用
+- 全面使用 TypeScript：优先使用接口（`interface`）而非类型别名（`type`），以便扩展和合并。
+- 避免枚举：使用映射（`map`）提高类型安全性和灵活性。
+- 函数式组件：使用 TypeScript 接口定义函数式组件。
+
+### UI 和样式
+- UI 库：使用 Tailwind CSS。
+- 响应式设计：采用移动优先的方法，使用 Tailwind CSS 实现响应式设计。
